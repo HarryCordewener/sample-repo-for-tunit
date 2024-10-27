@@ -3,19 +3,29 @@
 	public class Tests
 	{
 		[Before(Test)]
-		public async Task Setup()
+		public async Task SetupTests()
 		{
 			/* var container = new ArangoDbBuilder()
 				.WithImage("arangodb:latest")
 				.WithPassword("password")
 				.Build();*/
-			await Task.CompletedTask;
+			await Task.Delay(1);
+
+			return;
 		}
 
 		[Test]
-		public async Task Test1()
+		public async Task TestOne()
 		{
-			await Assert.That(true).IsTrue();
+			Func<bool> func = () => true;
+			await Assert.That(func()).IsTrue();
+		}
+
+		[Test]
+		public async Task TestTwo()
+		{
+			Func<bool> func = () => true;
+			await Assert.That(func()).IsTrue();
 		}
 	}
 }
